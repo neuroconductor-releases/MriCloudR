@@ -3,11 +3,18 @@
 
 This is an R package which wraps the MRICloud API so that it can be accessed from R.
 
+## Install using devtools
+
+To build and install `MriCloudR` using `devtools` 
+
+  devtools::install_github("bcaffo/MriCloudR/MriCloudR")
+
 ## Build
 
 To build release and documentation and install, run:
 
 	sh docBuildInstall.sh
+
 
 ## Installation
 

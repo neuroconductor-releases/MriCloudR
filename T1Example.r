@@ -2,12 +2,12 @@ library(MriCloudR)
 
 # MriCloud object.  Submit requests and retrieve results.
 
-mriCloudR <- MriCloudR(verbose = TRUE)
+mriCloudR = MriCloudR(verbose = TRUE)
 
 # Login using MriCloud credentials.  Currently, standard credentials are
 # supported, not OpenId
 
-login(mriCloudR, "kb1ooo@kb1ooo.com", "######")
+login(mriCloudR, "your@email", "######")
 
 # Create T1SegData object which contains payload information
 
