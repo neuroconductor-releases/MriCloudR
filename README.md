@@ -9,28 +9,6 @@ To build and install `MriCloudR` using `devtools`
 
   devtools::install_github("bcaffo/MriCloudR/MriCloudR")
 
-## Build
-
-To build release and documentation and install, run:
-
-	sh docBuildInstall.sh
-
-
-## Installation
-
-To install from a release build run (note the docBuildInstall.sh script already performs this step):
-
-	R -e "install.packages('./MriCloudR_0.9.1.tar.gz', repos = NULL, type='source')"
-
-## Make a release
-
-To make a release run (note, you will need the example data directories which are not currently stored in the repo):
-
-	sh makeInstall.sh	
-
-## Documentation
-
-Please see MriCloudR-manual-0.9.1.pdf for documentation.  
 
 ## Example code
 
@@ -46,3 +24,4 @@ and
 
 0.9.0  Initial release supporting T1 segmentation  
 0.9.1  Added Dti segmentation and adjusted default mricloud URL
+0.9.2  Changed the directory structure so that it can be submitted to Neuroconductor
