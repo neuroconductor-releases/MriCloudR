@@ -13,7 +13,7 @@ gender <- setSingleEnum("gender", levels = c("Male", "Female"))
 #' @import objectProperties
 #' @export
 #' @export T1SegData
-#' 
+#'
 #' @field processingServer processing server to use for segmentatino processing
 #' @field hdr hdr data filename
 #' @field img imd data filename
@@ -23,18 +23,20 @@ gender <- setSingleEnum("gender", levels = c("Male", "Female"))
 #' @field age Age of subject (OPTIONAL)
 #' @field description Any description of the dataset (OPTIONAL)
 
-T1SegData <- setRefClass("T1SegData", 
-												 properties(fields = list(
-																									processingServer = "character",
-																									hdr = "character", 
-																									img = "character", 
-																									age = "numeric",  
-																									gender = "genderSingleEnum", 
-																									sliceType = "sliceSingleEnum", 
-																									atlas = "atlasSingleEnum", 
-																									description = "character")),
-												 prototype = list(sliceType = sliceType("Sagittal"), 
-																					atlas = atlasName("Adult_286labels_10atlases_V5L")))
+T1SegData <- setRefClass(
+  "T1SegData",
+  properties(
+    fields = list(
+      processingServer = "character",
+      hdr = "character",
+      img = "character",
+      age = "numeric",
+      gender = "genderSingleEnum",
+      sliceType = "sliceSingleEnum",
+      atlas = "atlasSingleEnum",
+      description = "character")),
+  prototype = list(sliceType = sliceType("Sagittal"),
+                   atlas = atlasName("Adult_286labels_10atlases_V5L")))
 
 
 

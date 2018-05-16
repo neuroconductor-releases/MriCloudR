@@ -2,8 +2,8 @@
 % Please edit documentation in R/T1SegData.r
 \docType{class}
 \name{T1SegData-class}
-\alias{T1SegData}
 \alias{T1SegData-class}
+\alias{T1SegData}
 \title{T1 Segmentation Data Payload Class}
 \description{
 This class is used to create an object payload for T1 segmentation processing.
@@ -27,4 +27,5 @@ This class is used to create an object payload for T1 segmentation processing.
 
 \item{\code{description}}{Any description of the dataset (OPTIONAL)}
 }}
+
 

@@ -2,8 +2,8 @@
 % Please edit documentation in R/DtiSegData.r
 \docType{class}
 \name{DtiSegData-class}
-\alias{DtiSegData}
 \alias{DtiSegData-class}
+\alias{DtiSegData}
 \title{DTI Data Payload Class}
 \description{
 This class is used to create an object payload for DTI mapping processing.
@@ -24,4 +24,5 @@ This class is used to create an object payload for DTI mapping processing.
 
 \item{\code{description}}{Any description of the dataset (OPTIONAL)}
 }}
+
 
