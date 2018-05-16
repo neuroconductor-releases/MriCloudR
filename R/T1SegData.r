@@ -1,9 +1,18 @@
-#library(methods)
-#library(objectProperties)
-
-sliceType <- setSingleEnum("slice", levels = c("Axial", "Sagittal", "SagittalToAxial"))
-atlasName <- setSingleEnum("atlas", levels = c("Adult_286labels_10atlases_V5L", "Pediatric_286labels_11atlases_V5L", "Cortical_13Labels_30atlases_V1", "ADNI_297labels_9atlases_non_bifurcated_V1", "ADNI_297labels_9atlases_non_bifurcated_M2_V1", "Connectome_297labels_10atlases_V1", "Connectome_297labels_10atlases_M2_V1"))
-gender <- setSingleEnum("gender", levels = c("Male", "Female"))
+sliceType <- objectProperties::setSingleEnum(
+  "slice",
+  levels =
+    c("Axial", "Sagittal", "SagittalToAxial"))
+atlasName <- objectProperties::setSingleEnum(
+  "atlas",
+  levels = c("Adult_286labels_10atlases_V5L",
+             "Pediatric_286labels_11atlases_V5L",
+             "Cortical_13Labels_30atlases_V1",
+             "ADNI_297labels_9atlases_non_bifurcated_V1",
+             "ADNI_297labels_9atlases_non_bifurcated_M2_V1",
+             "Connectome_297labels_10atlases_V1",
+             "Connectome_297labels_10atlases_M2_V1"))
+gender <- objectProperties::setSingleEnum(
+  "gender", levels = c("Male", "Female"))
 
 
 #' T1 Segmentation Data Payload Class
