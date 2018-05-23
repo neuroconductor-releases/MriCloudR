@@ -12,8 +12,8 @@ dtiAtlasName <- setSingleEnum("dtiAtlas", levels = c("Pediatric_168labels_12atla
 #' @import objectProperties
 #' @export
 #' @export DtiSegData
-#' 
-#' @field processingServer processing server to use on backend 
+#'
+#' @field processingServer processing server to use on backend
 #' @field dataZip zip payload filename.  The zip file must contain the following files with indicated naming convention :
 #'   1)	b0 image (subjectname_b0.img, subjectname_b0.hdr)
 #'  2)	Mean diffusion weighted images (subjectname_dwi.img, subjectname_dwi.hdr)
@@ -22,12 +22,13 @@ dtiAtlasName <- setSingleEnum("dtiAtlas", levels = c("Pediatric_168labels_12atla
 #' @field atlas  "Pediatric_168labels_12atlases_V1", "Adult_168labels_8atlases_V1". Defaults to "Adult_168labels_8atlases_V1".
 #' @field description Any description of the dataset (OPTIONAL)
 
-DtiSegData <- setRefClass("DtiSegData", 
-												 properties(fields = list(
-																									dataZip = "character",
-																									processingServer = "character",
-																									sliceType = "dtiSliceSingleEnum", 
-																									atlas = "dtiAtlasSingleEnum", 
-																									description = "character")),
-													prototype = list(sliceType = dtiSliceType("Axial"), 
-																					 atlas = dtiAtlasName("Adult_168labels_8atlases_V1")))
+DtiSegData <- setRefClass("DtiSegData",
+                          properties(
+                            fields = list(
+                              dataZip = "character",
+                              processingServer = "character",
+                              sliceType = "dtiSliceSingleEnum",
+                              atlas = "dtiAtlasSingleEnum",
+                              description = "character")),
+                          prototype = list(sliceType = dtiSliceType("Axial"),
+                                           atlas = dtiAtlasName("Adult_168labels_8atlases_V1")))

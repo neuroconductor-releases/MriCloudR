@@ -2,8 +2,8 @@
 % Please edit documentation in R/MriCloudR.r
 \docType{class}
 \name{MriCloudR-class}
-\alias{MriCloudR}
 \alias{MriCloudR-class}
+\alias{MriCloudR}
 \title{A wrapper around the AnatomyWorks MriCloud Web API}
 \description{
 This class makes the MriCloud API functionality available in R,
@@ -13,7 +13,8 @@ interface.
 \section{Slots}{
 
 \describe{
-\item{\code{baseUrl}}{The root URL of the MRICloud API.  Default is \url{https://braingps.mricloud.org}.}
+\item{\code{baseUrl}}{The root URL of the MRICloud API.
+Default is \url{https://braingps.mricloud.org}.}
 
 \item{\code{verbose}}{Verbose output}
 }}
