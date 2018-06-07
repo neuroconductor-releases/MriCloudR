@@ -58,7 +58,10 @@ setMethod(f = "login",
             # requests and are automatically propagated by httr
 
             httr::set_config( config( ssl_verifypeer = 0L ) )
-            r <- POST(paste(object@baseUrl, "/login", sep = ''), body = list(login_email=username, login_password=password), encode = "form", config(followlocation = 0L));
+            r <- POST(paste(object@baseUrl, "/login", sep = ''),
+                      body = list(login_email=username, login_password=password),
+                      encode = "form",
+                      config(followlocation = 0L));
 
             # throw error if there is an http error
 
@@ -162,15 +165,31 @@ setMethod(f = "t1Seg", signature(object = "MriCloudR", data = "T1SegData"),
             body = list(slice_type = sliceInt,
                         atlas_name = atlasInt,
                         target_hdr = upload_file(data$hdr),
-                        target_img = upload_file(data$img),
-                        processing_serverid = data$processingServer,
-                        age = data$age,
-                        gender = data$gender[1],
-                        description = data$description)
+                        target_img = upload_file(data$img)
+            )
+            server = data$processingServer
+            # if (length(server) == 0) {
+            #   server = NULL
+            # }
+            # if (is.character(server)) {
+            #   if (nchar(server) == 0) {
+            #     server = NULL
+            #   }
+            # }
+
+            body$processing_serverid = server
+            body$age = data$age
+            gen = data$gender[1]
+            body$gender = gen
+            body$description = data$description
+
 
             #						print(paste(object@baseUrl, "/t1prep", sep = ''))
 
-            r <- POST(paste(object@baseUrl, "/t1prep", sep = ''), body = body, encode = "multipart", config(followlocation = 0L), progress(type = "up"));
+            r <- POST(paste(object@baseUrl, "/t1prep", sep = ''),
+                      body = body,
+                      encode = "multipart", config(followlocation = 0L),
+                      progress(type = "up"));
 
             stop_for_status(r)
             parsed <- content(r, "parsed")
@@ -295,3 +314,29 @@ setMethod(f = "downloadResult",
 )
 
 
+#' @rdname listJobs
+#' @export
+setGeneric(name = "listJobs",
+           def = function(object)
+           {
+             standardGeneric("listJobs")
+           }
+)
+
+#' List Jobs from MRI Cloud
+#'
+#' @param object Object of class \code{\link{MriCloudR-class}}.
+#' @return Returns the job ID for the processing request.
+#' @export
+#' @importFrom rvest html_table
+#' @rdname listJobs
+setMethod(f = "listJobs", signature(object = "MriCloudR"),
+          definition = function(object)
+          {
+            r <- GET(paste0(object@baseUrl, "/myjobstatus"));
+            stop_for_status(r)
+
+            cr = content(r)
+            rvest::html_table(cr)[[1]]
+          }
+)

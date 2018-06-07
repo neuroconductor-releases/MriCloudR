@@ -11,7 +11,7 @@ This class is used to create an object payload for T1 segmentation processing.
 \section{Fields}{
 
 \describe{
-\item{\code{processingServer}}{processing server to use for segmentatino processing}
+\item{\code{processingServer}}{processing server to use for segmentation processing}
 
 \item{\code{hdr}}{hdr data filename}
 
@@ -19,7 +19,11 @@ This class is used to create an object payload for T1 segmentation processing.
 
 \item{\code{sliceType}}{"Axial", "Sagital", or "SagittalToAxial". Defaults to "Sagital".}
 
-\item{\code{atlas}}{"Adult_286labels_10atlases_V5L", "Pediatric_286labels_11atlases_V5L", "Cortical_13Labels_30atlases_V1", "ADNI_297labels_9atlases_non_bifurcated_V1", "ADNI_297labels_9atlases_non_bifurcated_M2_V1", "Connectome_297labels_10atlases_V1", "Connectome_297labels_10atlases_M2_V1".  Defaults to "Adult_286labels_10atlases_V5L".}
+\item{\code{atlas}}{"Adult_286labels_10atlases_V5L", "Pediatric_286labels_11atlases_V5L",
+"Cortical_13Labels_30atlases_V1", "ADNI_297labels_9atlases_non_bifurcated_V1",
+"ADNI_297labels_9atlases_non_bifurcated_M2_V1",
+"Connectome_297labels_10atlases_V1", "Connectome_297labels_10atlases_M2_V1".
+Defaults to "Adult_286labels_10atlases_V5L".}
 
 \item{\code{gender}}{"Male", or "Female" (OPTIONAL)}
 
