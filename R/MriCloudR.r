@@ -277,7 +277,9 @@ setGeneric(name = "downloadResult",
 setMethod(f = "downloadResult",
           signature(object = "MriCloudR", jobId = "character",
                     filename = "character", waitForJobToFinish = 'logical'),
-          definition = function(object, jobId, filename, waitForJobToFinish)
+          definition = function(object, jobId,
+                                filename = tempfile(fileext = ".zip"),
+                                waitForJobToFinish = TRUE)
           {
             if (waitForJobToFinish) {
               max_iter = 1000
@@ -300,18 +302,35 @@ setMethod(f = "downloadResult",
 
             if (isJobFinished(object, jobId)) {
               r <- httr::GET(
-                paste0(object@baseUrl, "/roivis/jobid=",
-                       jobId, "filename=Result.zip"),
+                paste0(object@baseUrl, "/jobresultfile/jobid=",
+                       jobId, "&filename=Result.zip"),
                 httr::progress(type = "down"),
-                httr::write_disk(filename))
-              return(TRUE);
+                httr::write_disk(filename, overwrite = TRUE))
+              stop_for_status(r)
+              return(filename);
             } else {
-              print(paste(c("Job ", jobId, " not completed. Can't download result!"), collapse = ''))
-              return(FALSE);
+              stop(paste("Job ", jobId, " not completed. Can't download result!"))
+              return(NULL);
             }
 
           }
 )
+
+#' @rdname downloadResult
+#' @export
+setMethod(f = "downloadResult",
+          signature(object = "MriCloudR", jobId = "character",
+                    filename = "missing", waitForJobToFinish = 'logical'),
+          definition = function(object, jobId,
+                                filename = tempfile(fileext = ".zip"),
+                                waitForJobToFinish = TRUE) {
+            downloadResult(object = object,
+                           jobId = jobId,
+                           filename = filename,
+                           waitForJobToFinish = waitForJobToFinish)
+          }
+)
+
 
 
 #' @rdname listJobs
@@ -337,6 +356,9 @@ setMethod(f = "listJobs", signature(object = "MriCloudR"),
             stop_for_status(r)
 
             cr = content(r)
-            rvest::html_table(cr)[[1]]
+            res = rvest::html_table(cr)[[1]]
+            res$Action = gsub("\t", " ", res$Action)
+            res$Action = gsub("\\s+", " ", res$Action)
+            res
           }
 )
