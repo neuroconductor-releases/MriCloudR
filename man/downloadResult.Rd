@@ -4,13 +4,19 @@
 \name{downloadResult}
 \alias{downloadResult}
 \alias{downloadResult,MriCloudR,character,character,logical-method}
+\alias{downloadResult,MriCloudR,character,missing,logical-method}
 \title{Download result of processing request}
 \usage{
 downloadResult(object, jobId = "character", filename = "character",
   waitForJobToFinish = TRUE)
 
 \S4method{downloadResult}{MriCloudR,character,character,logical}(object,
-  jobId = "character", filename = "character", waitForJobToFinish = TRUE)
+  jobId = "character", filename = tempfile(fileext = ".zip"),
+  waitForJobToFinish = TRUE)
+
+\S4method{downloadResult}{MriCloudR,character,missing,logical}(object,
+  jobId = "character", filename = tempfile(fileext = ".zip"),
+  waitForJobToFinish = TRUE)
 }
 \arguments{
 \item{object}{Object of class \code{\link{MriCloudR-class}}.}
