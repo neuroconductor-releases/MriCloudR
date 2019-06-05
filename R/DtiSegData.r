@@ -30,5 +30,6 @@ DtiSegData <- setRefClass("DtiSegData",
                               sliceType = "dtiSliceSingleEnum",
                               atlas = "dtiAtlasSingleEnum",
                               description = "character")),
-                          prototype = list(sliceType = dtiSliceType("Axial"),
+                              representation = list(sliceType="SingleEnum", atlas="SingleEnum"),
+                              prototype = list(sliceType = dtiSliceType("Axial"),
                                            atlas = dtiAtlasName("Adult_168labels_8atlases_V1")))
