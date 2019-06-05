@@ -8,7 +8,8 @@
 \usage{
 isJobFinished(object, jobId = "character")
 
-\S4method{isJobFinished}{MriCloudR,character}(object, jobId = "character")
+\S4method{isJobFinished}{MriCloudR,character}(object,
+  jobId = "character")
 }
 \arguments{
 \item{object}{Object of class \code{\link{MriCloudR-class}}.}
