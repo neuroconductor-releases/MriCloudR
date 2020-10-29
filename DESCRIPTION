@@ -8,14 +8,13 @@ Maintainer: Brian Caffo <bcaffo@gmail.com>
 Description: Provides an R interface to the MriCloud API.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Depends:
-    methods,
-Imports:
-    rvest,
-    httr,
-    objectProperties
+Depends: methods,
+Imports: rvest, httr, objectProperties
 RoxygenNote: 6.1.1
-Collate: 
-    DtiSegData.r
-    T1SegData.r
-    MriCloudR.r
+Collate: DtiSegData.r T1SegData.r MriCloudR.r
+Additional_repositories: https://neuroconductor.org/releases/2020/10/
+Repository: Neuroconductor-Releases
+Suggests: 
+    covr,
+    testthat
+biocViews: 
